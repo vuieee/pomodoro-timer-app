@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pomodoro Timer</title>
+<meta name="description" content="A simple Pomodoro timer for focused work and restorative breaks.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site-ui.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="pomodoro-page">
+<div id="wrapper">
+  <main id="main">
+    <section class="pomodoro" aria-labelledby="pomodoroTitle">
+      <p class="pomodoro-eyebrow">FOCUS, THEN REST</p>
+      <h1 id="pomodoroTitle">Pomodoro Timer</h1>
+      <div class="session-tabs" role="group" aria-label="Timer mode">
+        <button class="session-tab is-active" type="button" data-mode="work" aria-pressed="true">Focus</button>
+        <button class="session-tab" type="button" data-mode="short" aria-pressed="false">Short break</button>
+        <button class="session-tab" type="button" data-mode="long" aria-pressed="false">Long break</button>
+      </div>
+      <div class="timer-display" role="timer" aria-label="Time remaining">
+        <span id="timerDisplay">25:00</span>
+      </div>
+      <p id="timerStatus" class="timer-status" role="status" aria-live="polite">Ready to focus</p>
+      <div class="timer-controls">
+        <button id="startButton" class="timer-button timer-button-primary" type="button">Start</button>
+        <button id="resetButton" class="timer-button" type="button">Reset</button>
+      </div>
+      <p id="sessionCount" class="session-count">0 of 4 focus sessions completed</p>
+    </section>
+
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
