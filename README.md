@@ -1,7 +1,5 @@
 # Pomodoro Timer
 
-A native Windows desktop Pomodoro timer built with Python and PySide6. The interface follows the original app's dark palette, monospaced typography, and compact task cards without using a browser or embedded web view.
-
 ## Features
 
 - 25-minute focus sessions, 5-minute short breaks, and 15-minute long breaks.
