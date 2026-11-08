@@ -3,40 +3,137 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pomodoro Timer</title>
-<meta name="description" content="A simple Pomodoro timer for focused work and restorative breaks.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Pomodoro Timer | Joshua Omamalin</title>
+<meta name="description" content="A full-featured Pomodoro timer to plan tasks, organize projects, track focus sessions, and make time for restorative breaks.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="canonical" href="https://vuieee.github.io/pomodoro-timer/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vuieee.github.io/pomodoro-timer/">
+<meta property="og:title" content="Pomodoro Timer | Joshua Omamalin">
+<meta property="og:description" content="A full-featured Pomodoro timer to plan tasks, organize projects, track focus sessions, and make time for restorative breaks.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pomodoro Timer | Joshua Omamalin">
+<meta name="twitter:description" content="A full-featured Pomodoro timer to plan tasks, organize projects, track focus sessions, and make time for restorative breaks.">
+<link rel="icon" href="favicon.svg?v=2" type="image/svg+xml" sizes="any">
+<link rel="apple-touch-icon" href="touch-icon.png?v=2" sizes="180x180" type="image/png">
 <link rel="stylesheet" href="site-ui.css">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pomodoro Timer",
+  "url": "https://vuieee.github.io/pomodoro-timer/",
+  "description": "A full-featured Pomodoro timer to plan tasks, organize projects, track focus sessions, and make time for restorative breaks.",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Any"
+}
+</script>
 </head>
 <body class="pomodoro-page">
 <div id="wrapper">
+<header class="site-header">
+  <a class="portfolio-name slide" href="https://vuieee.github.io/" rel="author">Joshua Omamalin</a>
+  <div class="site-nav">
+    <span class="header-divider" aria-hidden="true"></span>
+    <h1 class="header-tagline" id="pomodoroTitle">Pomodoro Timer</h1>
+  </div>
+</header>
   <main id="main">
+    <p class="intro-description">A fuller version of my <a class="slide" href="https://vuieee.github.io/projects/pomodoro-timer/">Pomodoro side project</a>, with task planning, project tracking, and session progress.</p>
     <section class="pomodoro" aria-labelledby="pomodoroTitle">
       <p class="pomodoro-eyebrow">FOCUS, THEN REST</p>
-      <h1 id="pomodoroTitle">Pomodoro Timer</h1>
-      <div class="session-tabs" role="group" aria-label="Timer mode">
-        <button class="session-tab is-active" type="button" data-mode="work" aria-pressed="true">Focus</button>
-        <button class="session-tab" type="button" data-mode="short" aria-pressed="false">Short break</button>
-        <button class="session-tab" type="button" data-mode="long" aria-pressed="false">Long break</button>
-      </div>
-      <div class="timer-display" role="timer" aria-label="Time remaining">
-        <span id="timerDisplay">25:00</span>
-      </div>
-      <p id="timerStatus" class="timer-status" role="status" aria-live="polite">Ready to focus</p>
-      <div class="timer-controls">
-        <button id="startButton" class="timer-button timer-button-primary" type="button">Start</button>
-        <button id="resetButton" class="timer-button" type="button">Reset</button>
+      <div class="timer-panel">
+          <div class="session-tabs" role="group" aria-label="Timer mode">
+            <button class="session-tab is-active" type="button" data-mode="work" aria-pressed="true">Focus</button>
+            <button class="session-tab" type="button" data-mode="short" aria-pressed="false">Short break</button>
+            <button class="session-tab" type="button" data-mode="long" aria-pressed="false">Long break</button>
+          </div>
+          <div class="timer-display" role="timer" aria-label="Time remaining">
+            <span id="timerDisplay">25:00</span>
+          </div>
+          <p id="timerStatus" class="timer-status" role="status" aria-live="polite">Ready when you are</p>
+          <div class="timer-controls">
+            <button id="startButton" class="timer-button timer-button-primary" type="button">Start focus</button>
+            <button id="resetButton" class="timer-button" type="button">Reset</button>
+          </div>
       </div>
       <p id="sessionCount" class="session-count">0 of 4 focus sessions completed</p>
+      <p class="current-focus">Up next: <span id="currentTaskTitle">Choose a task to begin</span> · <span id="currentTaskProgress" class="current-task-progress">Your next 25 minutes are yours.</span></p>
+      <p id="storageNotice" class="storage-notice" role="status" aria-live="polite" hidden></p>
     </section>
 
+    <section class="tasks-section" aria-labelledby="tasksTitle">
+      <div class="tasks-header">
+        <div>
+          <h2 id="tasksTitle">Your tasks</h2>
+        </div>
+        <button id="addTaskButton" class="add-task-button" type="button" aria-expanded="false" aria-controls="taskFormPanel">
+          <span aria-hidden="true">+</span> Add a task
+        </button>
+      </div>
+      <div id="taskFormPanel" class="task-form-panel" hidden>
+        <form id="taskForm">
+          <div class="form-heading">
+            <h3>Make a little plan</h3>
+            <button id="cancelTaskButton" class="icon-button" type="button" aria-label="Close task form">×</button>
+          </div>
+          <label class="form-field">
+            <span>Task name</span>
+            <input id="taskTitleInput" name="title" type="text" maxlength="120" placeholder="What would you like to work on?" required>
+          </label>
+          <label class="form-field">
+            <span>Note <span class="field-hint">optional</span></span>
+            <textarea id="taskNoteInput" name="note" rows="2" maxlength="500" placeholder="A detail, reminder, or first step…"></textarea>
+          </label>
+          <div class="form-row">
+            <label class="form-field">
+              <span>Project <span class="field-hint">optional</span></span>
+              <input id="taskProjectInput" name="project" type="text" maxlength="60" list="projectOptions" placeholder="e.g. Website">
+              <datalist id="projectOptions"></datalist>
+            </label>
+            <label class="form-field estimate-field">
+              <span>Estimated pomodoros</span>
+              <input id="taskEstimateInput" name="estimate" type="number" min="1" max="12" value="1" required>
+            </label>
+          </div>
+          <div class="form-actions">
+            <button class="text-button" id="cancelTaskButtonSecondary" type="button">Cancel</button>
+            <button class="timer-button timer-button-primary" type="submit">Add task</button>
+          </div>
+        </form>
+      </div>
+      <div class="task-tools">
+        <label class="filter-field">
+          <span class="sr-only">Filter tasks by project</span>
+          <select id="projectFilter" aria-label="Filter tasks by project">
+            <option value="all">All projects</option>
+          </select>
+        </label>
+        <div class="task-filters" role="group" aria-label="Filter tasks">
+          <button type="button" class="filter-button is-active" data-filter="active" aria-pressed="true">To do</button>
+          <button type="button" class="filter-button" data-filter="completed" aria-pressed="false">Completed</button>
+          <button type="button" class="filter-button" data-filter="all" aria-pressed="false">All</button>
+        </div>
+      </div>
+      <ul id="taskList" class="task-list" aria-live="polite" aria-relevant="additions removals"></ul>
+      <div id="emptyTasks" class="empty-tasks">
+        <span class="empty-mark" aria-hidden="true">✳</span>
+        <p id="emptyTasksTitle">A fresh start.</p>
+        <span id="emptyTasksHint">Add a task and give your focus somewhere to go.</span>
+      </div>
+      <p id="taskCount" class="task-count"></p>
+    </section>
   </main>
+  <footer class="site-footer">
+    <div class="footer-meta">
+      <span>Static Site — Hosted by GitHub Pages</span>
+      <a class="slide" href="https://github.com/vuieee/pomodoro-timer">View repository</a>
+    </div>
+  </footer>
 </div>
 <script src="app.js"></script>
+<script src="scrollbar.js"></script>
 </body>
 </html>
