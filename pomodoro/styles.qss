@@ -1,0 +1,181 @@
+QWidget {
+    background-color: #1a1a1a;
+    color: #e4ded3;
+    font-family: "JetBrains Mono";
+    font-size: 14px;
+}
+
+QMainWindow {
+    background-color: #1a1a1a;
+}
+
+QScrollArea, QScrollArea > QWidget > QWidget {
+    border: 0;
+    background-color: #1a1a1a;
+}
+
+QScrollBar:vertical {
+    width: 10px;
+    background: #1a1a1a;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    min-height: 28px;
+    background: #77736e;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QLabel#pageTitle {
+    color: #eee7dc;
+    font-family: "Aleo";
+    font-size: 25px;
+}
+
+QLabel#intro, QLabel#timerStatus, QLabel#sessionCount,
+QLabel#currentFocus, QLabel#taskCount, QLabel#fieldHint {
+    color: #aaa095;
+}
+
+QLabel#intro {
+    padding-left: 12px;
+    border-left: 2px solid #aaa095;
+}
+
+QFrame#timerPanel, QFrame#taskForm, QFrame#taskCard {
+    background-color: #1e1e1e;
+    border: 1px solid #525252;
+}
+
+QLabel#eyebrow {
+    color: #aaa095;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+QPushButton, QComboBox, QLineEdit, QTextEdit, QSpinBox {
+    min-height: 34px;
+    padding: 4px 9px;
+    border: 1px solid #77736e;
+    border-radius: 0;
+    background-color: #1a1a1a;
+    color: #d0c8bd;
+    selection-background-color: #e0a17e;
+    selection-color: #1a1a1a;
+}
+
+QPushButton:hover, QComboBox:hover {
+    border-color: #d0c8bd;
+    color: #eee7dc;
+}
+
+QPushButton:checked, QPushButton#modeButton:checked {
+    border-color: #e0a17e;
+    color: #e0a17e;
+}
+
+QPushButton#primaryButton {
+    border-color: #e0a17e;
+    background-color: #e0a17e;
+    color: #1a1a1a;
+}
+
+QPushButton#primaryButton:hover {
+    border-color: #eee7dc;
+    background-color: #eee7dc;
+}
+
+QPushButton#addTaskButton, QPushButton#editTaskButton {
+    border-color: #e0a17e;
+    color: #e0a17e;
+}
+
+QPushButton#addTaskButton:hover, QPushButton#editTaskButton:hover {
+    background-color: #33251d;
+}
+
+QPushButton#filterButton {
+    border-color: transparent;
+    color: #aaa095;
+}
+
+QPushButton#filterButton:checked {
+    border-color: #77736e;
+    color: #eee7dc;
+}
+
+QLabel#timerDisplay {
+    color: #eee7dc;
+    font-size: 76px;
+    font-weight: 600;
+}
+
+QLabel#taskHeading {
+    color: #eee7dc;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+QLabel#taskTitle {
+    color: #eee7dc;
+    font-size: 14px;
+}
+
+QLabel#taskTitle:hover {
+    color: #e0a17e;
+}
+
+QLabel#taskTitle[completed="true"] {
+    color: #aaa095;
+}
+
+QLabel#taskMeta, QLabel#taskNote {
+    color: #aaa095;
+    font-size: 11px;
+}
+
+QFrame#taskCard[selected="true"] {
+    border-color: #e0a17e;
+}
+
+QFrame#taskCard[completed="true"] {
+    background-color: #1a1a1a;
+}
+
+QLabel#storageNotice, QLabel#errorLabel {
+    color: #d98a86;
+}
+
+QLineEdit:focus, QTextEdit:focus, QSpinBox:focus, QComboBox:focus {
+    border-color: #e0a17e;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #1e1e1e;
+    selection-background-color: #33251d;
+}
+
+QCheckBox {
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #77736e;
+    border-radius: 8px;
+    background: transparent;
+}
+
+QCheckBox::indicator:checked {
+    border-color: #c3a895;
+    background: #c3a895;
+}
+
+QPushButton#deleteTaskButton:hover {
+    border-color: #d98a86;
+    color: #d98a86;
+}
